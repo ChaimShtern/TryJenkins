@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Data data = new Data();
+            foreach (Person person in data.GetPeople())
+            {
+                person.Print();
+            }
         }
     }
 }
