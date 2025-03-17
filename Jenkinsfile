@@ -14,6 +14,9 @@ pipeline {
                 script {
                     sh 'dotnet build TryJenkins/TryJenkins.csproj'
                 }
+                script {
+                    sh 'dotnet build TryJenkins.Tests/TryJenkins.Tests/TryJenkins.Tests.csproj'
+                }
             }
         }
         stage('Test') {
