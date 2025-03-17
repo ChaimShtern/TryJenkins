@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        dotnet 'dotnet7' // Ensure .NET 7 is available in Jenkins
-    }
     environment {
         DOTNET_VERSION = '7.0'
     }
@@ -12,24 +9,17 @@ pipeline {
                 git 'https://github.com/ChaimShtern/TryJenkins.git'
             }
         }
-        stage('Restore Dependencies') {
-            steps {
-                script {
-                    sh 'dotnet restore TryJenkins/TryJenkins.csproj'
-                }
-            }
-        }
         stage('Build') {
             steps {
                 script {
-                    sh 'dotnet build TryJenkins/TryJenkins.csproj --no-restore'
+                    sh 'dotnet build TryJenkins/TryJenkins.csproj'
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    sh 'dotnet test TryJenkins.Tests/TryJenkins.Tests.csproj --no-build --logger trx'
+                    sh 'dotnet test TryJenkins.Tests/TryJenkins.Tests/TryJenkins.Tests.csproj'
                 }
             }
         }
@@ -43,11 +33,10 @@ pipeline {
     }
     post {
         success {
-            echo 'Build and tests succeeded!'
+            echo 'Build succeeded!'
         }
         failure {
-            echo 'Build or tests failed!'
+            echo 'Build failed!'
         }
     }
 }
-
