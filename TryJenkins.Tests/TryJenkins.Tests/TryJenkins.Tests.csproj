@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <Reference Include="TryJenkins">
-      <HintPath>..\..\TryJenkins\bin\Debug\net8.0\TryJenkins.dll</HintPath>
+      <HintPath>..\..\TryJenkins\bin\Debug\net7.0\TryJenkins.dll</HintPath>
     </Reference>
   </ItemGroup>
 
